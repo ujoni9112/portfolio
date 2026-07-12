@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>넥슨플레이 간편 로그인 설계 — 권유정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets-css/project.css">
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html#work" class="back-link">← 포트폴리오로 돌아가기</a>
+    <div class="brand">권유정 <span>· Data-Driven PM</span></div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <span class="p-lab">Project 01 · Data-Driven · SSO</span>
+    <h1 class="hero-title">넥슨플레이 간편 로그인 설계</h1>
+    <div class="hero-meta">넥슨코리아 · 2024.03 — 2024.12</div>
+    <div class="tags"><span class="tag">App</span><span class="tag">Data</span><span class="tag">SSO</span><span class="tag">Platform</span></div>
+
+    <div class="headline-bar">
+      <b>PowerBI + Snowflake + DAX</b>를 직접 다루어 로그인 퍼널 대시보드를 구축하고, SDK 통신 규격 · 인증 정책을 설계. 전사 의사결정 리드타임 단축 + 외부 도입 공수 절감을 동시에 달성하고자 함.
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">개요</span>
+      <p>계정 전환 기능 도입 및 넥슨플레이를 활용한 간편 로그인(SSO) 도입에 앞서, 대·내외적으로 로그인 행태 분석이 필요했으며, 이를 위한 로그인 지표 대시보드를 설계·전파하고 SSO 기능 상세 기획 및 런칭을 주도.</p>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">문제</span>
+      <ul>
+        <li><b>비즈니스 임팩트 파악 필요</b> — 넥슨플레이 로그인을 외부 앱으로 확장해 플랫폼 생태계를 구축하려 했으나, 실제 유저의 복잡한 로그인 행태(계정 전환·이탈 지점 등) 정밀 데이터 부재로 사업 타당성 검토 지연</li>
+        <li><b>고객 경험 제고 필요</b> — 플랫폼 간 연동 시 불규칙한 에러 처리·불명확한 통신 규격으로 도입 난이도↑ 및 고객 경험 파편화</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">가설</span>
+      <ul>
+        <li>유저 로그인 퍼널을 데이터로 가시화해 병목 구간을 제거하면, 간편 로그인 도입 시 전환율 시뮬레이션이 가능해져 사업 확정 속도가 비약적으로 상승할 것이다.</li>
+        <li>인증 플로우를 표준화한 SDK + 케이스별 예외 처리 가이드를 제공하면, 연동 공수가 감소하여 제품의 확산 속도가 빨라질 것이다.</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">기여</span>
+      <ul>
+        <li><b>데이터 파이프라인 구축</b> — 화면별·버튼별 로그 코드 설계 및 개발 요청, PowerBI ↔ Snowflake 직접 연동 후 DAX로 유니크 로그인 · 계정 전환 · 사용률 · 1인당 일평균 계정 전환 횟수 등 지표 추출</li>
+        <li><b>대시보드 설계</b> — 한 눈에 보이는 요약 지표 영역(툴팁 포함) + 앱 버전 · OS별 필터 + 일반 로그인 vs 계정 전환 비교 구좌 + 로그인 수단별 도넛 + 일자별 시계열</li>
+        <li><b>SSO 제품 전략 · SDK 설계</b> — 넥슨플레이를 인증 플랫폼으로 격상시키는 SDK 통신 규격 및 인증 정책 설계 주도</li>
+        <li><b>예외 · 에러 정책 표준화</b> — 유저 계정 상태별 와이어프레임 설계 + 사용자 친화적 에러 메시지 표준화</li>
+        <li><b>이해관계자 얼라인먼트</b> — 개발 · 사업 · 보안 부서 간 복잡한 이해관계를 조율하며 우선순위 확보 및 장기 로드맵 수립</li>
+      </ul>
+    </div>
+
+    <div class="impact-box">
+      <span class="blk-label">Impact</span>
+      <ul>
+        <li>전사 유관 부서의 데이터 접근성 개선으로 <b>간편 로그인 도입 의사결정 리드타임 대폭 단축</b></li>
+        <li>SDK 연동 표준 가이드 수립으로 <b>외부 서비스 도입 시 발생하는 기술 지원 공수 절감</b> 및 연동 효율성 극대화</li>
+      </ul>
+    </div>
+
+    <div class="reflect-box">
+      <span class="blk-label">Reflection</span>
+      <p>데이터로 가설을 만들고, 스펙으로 그 가설을 시스템에 이식할 수 있다면 제품은 한 단계 빠르게 움직인다.</p>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">서비스 플로우 기획</span>
+      <div class="confidential-note">
+        <span class="ic">🔒</span>
+        <p>본 서비스 플로우 문서는 대외비(회사 내부 자료)를 포함하고 있어, 세부 내용은 블러 처리했습니다. 실제 정책·로직이 아닌 <b>기획서 작성 방식과 플로우 설계 구조를 보여주기 위한 참고용</b>으로 첨부했습니다.</p>
+      </div>
+      <div class="gallery single">
+        <div class="shot">
+          <img src="images/login-serviceflow.png" alt="넥슨플레이 간편 로그인 서비스 플로우 기획 문서 (대외비 블러 처리)">
+          <div class="cap">TOP · 조건분기 · 예외처리를 스윔레인으로 구조화한 로그인 서비스 플로우 다이어그램 (내용 블러 처리)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">PowerBI 대시보드 · 직접 구축</span>
+      <div class="gallery match-height">
+        <div class="shot">
+          <img src="images/login-dashboard.png" alt="넥슨플레이 로그인 · 계정 전환 지표 PowerBI 대시보드">
+          <div class="cap">요약 지표(전체·로그인·계정 전환 PV/UU) + 일반 로그인 vs 계정 전환 구좌 비교</div>
+        </div>
+        <div class="shot">
+          <img src="images/login-app.png" alt="넥슨플레이 앱 간편 로그인 화면">
+          <div class="cap">넥슨플레이 앱 간편 로그인 화면</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-project">
+      <a href="project-shorturl.html">← 이전 프로젝트: NEXON Shortened URL</a>
+      <a href="project-best.html" class="btn btn-primary">다음 프로젝트: 홈앤쇼핑 베스트 전문관 →</a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 권유정 · Yu Jeong Kwon — Data-Driven PM & AI 기획자</footer>
+</body>
+</html>

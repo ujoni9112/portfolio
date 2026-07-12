@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXON Shortened URL · AI 협업형 PRD 재구축 — 권유정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets-css/project.css">
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+
+<nav>
+  <div class="nav-in">
+    <a href="index.html#work" class="back-link">← 포트폴리오로 돌아가기</a>
+    <div class="brand">권유정 <span>· Data-Driven PM</span></div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <span class="p-lab">AI Workflow · Co-Authored PRD</span>
+    <h1 class="hero-title">NEXON Shortened URL · AI 협업형 PRD 재구축</h1>
+    <div class="hero-meta">넥슨코리아 · 2026.03 — 진행중</div>
+    <div class="tags"><span class="tag">AX</span><span class="tag">Figma AI</span><span class="tag">Platform</span></div>
+
+    <div class="headline-bar">
+      레거시 사내 단축 URL 서비스를 사용성·운영성·확장성 관점에서 <b>전면 재설계</b>. Speckit 기반 협업형 PRD 워크플로우를 정립해 기획·개발 명세를 단일 문서로 통합하고, 그 명세가 곧 개발·검증의 기준이 되도록 구조화.
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">문제 인식</span>
+      <p style="margin-bottom:14px">PRD가 사람의 합의서로 끝나면, 기획·개발·AI는 같은 문서를 보고도 서로 다른 결과를 만듭니다.</p>
+      <ul>
+        <li><b>명세 단절</b> — 기획자의 PRD, 개발자의 스펙 문서, AI 프롬프트가 각각 다른 형식으로 존재해 정보 누락·해석 편차 발생</li>
+        <li><b>모호성 = 결과 편차</b> — 명세에 빈틈이 있으면 사람도 AI도 각자 추정해 메우게 되어 결과물 일관성 저하</li>
+        <li><b>운영 사고 리스크</b> — 기존 단축 URL 서비스의 3자리 정책으로 브라우저 캐시 대소문자 충돌 발생(n8G → 캐시 n8g → 신규 N8g와 충돌)</li>
+        <li><b>권한 구조 의존성</b> — 슈퍼어드민 개념으로 인계자가 타인 링크 수정 불가, 운영 인계 시마다 공수 발생</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">프로젝트 목표</span>
+      <p style="font-size:1.1rem;color:var(--ink);font-weight:600;margin-bottom:10px">"명세를 구조화하면, 기획·개발·AI가 같은 결과를 만든다."</p>
+      <p>Speckit 기반 협업형 PRD를 통해 Consistency · Co-authoring · Compactness · Continuity 네 가지 핵심 가치 달성.</p>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">핵심 가치</span>
+      <div class="value-grid" style="grid-template-columns:repeat(4,1fr)">
+        <div class="v-card"><h4>CONSISTENCY</h4><p>Speckit으로 기획·개발 초안을 동일 형식으로 정렬</p></div>
+        <div class="v-card"><h4>CO-AUTHORING</h4><p>기획자·개발자 역할 분담 후 단일 PRD로 병합</p></div>
+        <div class="v-card"><h4>COMPACTNESS</h4><p>백오피스 없이 빠르게 개발·운영 가능한 컴팩트 구조</p></div>
+        <div class="v-card"><h4>CONTINUITY</h4><p>후속 프로젝트에서 재사용 가능한 표준 워크플로우 자산화</p></div>
+      </div>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">PRD 협업 플로우</span>
+      <div class="flow-steps" style="margin-bottom:18px">
+        <span class="flow-step"><b>STEP 1</b>역할 분담 정의</span>
+        <span class="flow-step"><b>STEP 2</b>초안 병렬 작성</span>
+        <span class="flow-step"><b>STEP 3</b>Speckit 구조화</span>
+        <span class="flow-step"><b>STEP 4</b>단일 PRD 병합</span>
+        <span class="flow-step"><b>STEP 5</b>리뷰 & 확정</span>
+        <span class="flow-step"><b>STEP 6</b>Figma AI 프로토타이핑</span>
+      </div>
+      <ul>
+        <li>기획자: 서비스 플로우·유즈케이스 · 개발자: 개발 스펙·아키텍처 — <b>유즈케이스 17개·플로우 다이어그램 / 데이터 모델·API 명세</b></li>
+        <li>요구사항·스펙을 일관 형식으로 정제, 모호성·누락 항목 자동 검출 — <b>기획·개발 명세를 하나의 문서로 통합, 상호 참조 링크 정렬</b></li>
+        <li>병합된 PRD를 기준 문서로 확정, 개발·QA·일정 논의에 직접 활용 — <b>PRD 기반 프론트엔드 화면 자동 생성, 명세 ↔ 화면 즉시 검증</b></li>
+      </ul>
+    </div>
+
+    <p class="subsection-title">AI LAB 핵심 기획 의사결정</p>
+    <p style="color:var(--ink-soft);margin-bottom:34px">NEXON Shortened URL은 단순 리뉴얼이 아닙니다. Speckit 기반 협업형 PRD로 기획·개발 명세를 단일 문서로 통합한 결과, 운영 사고를 원천 차단하는 정책 의사결정들이 PRD 단계에서 모두 이뤄졌습니다.</p>
+
+    <div class="deci-list">
+      <div class="deci">
+        <span class="num">1</span>
+        <h4>코드 정책 재설계 — Base36 7자리</h4>
+        <p>브라우저 캐시 대소문자 정규화로 인한 충돌 사례를 PRD 단계에서 정의하고, Bitly · TinyURL · Short.io · t.co의 코드 정책을 벤치마킹해 Base36(소문자+숫자) 7자리로 전환했습니다. 783억 코드 공간을 확보하면서도 캐시 충돌 가능성을 0으로 만들었습니다. 서버 입력 단계의 toLowerCase() 정규화까지 PRD에 명시해 정책이 코드에 정확히 이식되도록 했습니다.</p>
+      </div>
+      <div class="deci">
+        <span class="num">2</span>
+        <h4>권한 모델 평탄화 — 어드민 개념 제거</h4>
+        <p>슈퍼어드민 권한 분기를 삭제하고, 난수 7자리 코드 인증 + 사번 자동 로깅 기반의 평탄한 권한 모델로 재설계했습니다. 본인·타인 구분 없이 누구나 수정 가능하되, 변경 이력은 시스템이 자동으로 추적합니다. 인계 시마다 발생하던 권한 이양 공수가 사라졌습니다.</p>
+      </div>
+      <div class="deci">
+        <span class="num">3</span>
+        <h4>만료 일자 단일 API 통합</h4>
+        <p>만료 전 연장과 만료 후 재활성화를 별도 기능으로 두지 않고, 시작일·종료일 변경 단일 수정 API로 통합했습니다. 730일 상한 검증을 백엔드에 일원화하고, 시작일을 변경하면 종료일 상한도 자동 재계산되도록 설계했습니다. 추가 API 없이 모든 케이스를 처리할 수 있는 컴팩트한 구조를 확보했습니다.</p>
+      </div>
+      <div class="deci">
+        <span class="num">4</span>
+        <h4>도메인 운영 표준화</h4>
+        <p>기존 하드코딩된 도메인 운영을 제공 가능한 도메인 리스트를 드롭다운으로 표기했고, 추가 희망 시 요청 프로세스를 표준화했습니다.</p>
+      </div>
+    </div>
+
+    <div class="blk" style="margin-top:40px">
+      <span class="blk-label">AI 워크플로우 인사이트 — AI 시대의 협업형 PRD</span>
+      <ul>
+        <li><b>역할 분담 + 병합</b> — 한 사람이 PRD를 처음부터 끝까지 쓰는 방식이 아니라, 기획자(서비스 플로우·유즈케이스)와 개발자(개발 스펙·아키텍처)가 초안을 병렬 작성한 뒤 단일 PRD로 병합합니다. 각자의 전문성을 잃지 않으면서 단일 문서 체계 안에서 연결되는 구조입니다.</li>
+        <li><b>Speckit으로 정합성 확보</b> — 두 초안을 그대로 합치면 형식·용어·디테일 수준이 달라 충돌이 납니다. Speckit으로 요구사항·스펙을 일관된 형식으로 구조화해 모호성과 누락 항목을 자동 검출하고, 두 문서가 같은 언어로 정렬되도록 정제했습니다.</li>
+        <li><b>Figma AI로 명세 → 화면 즉시 검증</b> — 정제된 PRD를 기반으로 Figma AI를 활용해 프론트엔드 화면을 빠르게 생성합니다. 명세에서 빠진 인터랙션·예외 케이스가 화면 단계에서 즉시 발견되어, PRD ↔ 화면 양방향 검증 루프가 작동합니다.</li>
+        <li><b>기준 문서로서의 PRD</b> — 병합된 PRD가 단순 설명 문서가 아니라, 개발·QA·일정 논의에 그대로 활용 가능한 기준 문서 역할을 합니다. 이 워크플로우는 후속 프로젝트의 표준 협업 방식으로 확장 가능한 자산이 됩니다.</li>
+      </ul>
+    </div>
+
+    <div class="blk">
+      <span class="blk-label">AS-IS · TO-BE 요약 (사내 서비스로 화면 제공 불가)</span>
+      <div class="gallery" style="margin-top:8px">
+        <div class="shot" style="background:var(--glass)">
+          <div style="padding:20px 22px">
+            <div class="pill-row"><span class="pill asis">AS-IS · 기존</span></div>
+            <ul style="margin-top:2px">
+              <li>3자리 난수(대·소문자 혼용) 정책으로 브라우저 캐시 정규화 시 의도치 않은 리다이렉트 충돌 가능</li>
+              <li>슈퍼어드민 권한 분기에 의존 — 타인 링크 수정·운영 인계 시마다 반복 공수</li>
+              <li>도메인 단일·예외 하드코딩 위주</li>
+              <li>만료 일자 UX·알림 부족, 통계는 로우 데이터 중심</li>
+            </ul>
+          </div>
+        </div>
+        <div class="shot" style="background:var(--glass)">
+          <div style="padding:20px 22px">
+            <div class="pill-row"><span class="pill tobe">TO-BE · 리뉴얼</span></div>
+            <ul style="margin-top:2px">
+              <li>Base36 7자리(소문자+숫자) + 서버 단 정규화로 캐시 충돌 가능성 제거 및 코드 공간 확보</li>
+              <li>난수 코드 인증 + 사번·변경 로그 기반 평탄한 권한 모델(슈퍼어드민 개념 제거)</li>
+              <li>제공 도메인 드롭다운·추가 요청 프로세스 표준화</li>
+              <li>만료 프리셋·재활성화·QR·운영 지표 확장</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflect-box">
+      <span class="blk-label">Reflection</span>
+      <p>명세의 모호성을 줄이는 일이 곧 협업의 속도를 만든다. AI 시대의 PRD는 사람뿐 아니라 AI도 함께 읽는 문서다.</p>
+    </div>
+
+    <div class="next-project">
+      <a href="project-dashagent.html">← 이전 프로젝트: DashAgent</a>
+      <a href="project-login.html" class="btn btn-primary">다음 프로젝트: 넥슨플레이 간편 로그인 →</a>
+    </div>
+  </div>
+</main>
+
+<footer>© 2026 권유정 · Yu Jeong Kwon — Data-Driven PM & AI 기획자</footer>
+</body>
+</html>
