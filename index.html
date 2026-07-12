@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>권유정 · Data-Driven PM & AI 기획자</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#070b1a;
+    --bg-1:#0d1330;
+    --ink:#eaf0ff;
+    --ink-soft:#a9b6d9;
+    --ink-dim:#6b7aa6;
+    --glass:rgba(255,255,255,0.055);
+    --glass-strong:rgba(255,255,255,0.09);
+    --stroke:rgba(255,255,255,0.12);
+    --stroke-soft:rgba(255,255,255,0.07);
+    --cyan:#3fe0d0;
+    --violet:#8b7bff;
+    --blue:#4f8cff;
+    --accent-grad:linear-gradient(120deg,#3fe0d0 0%,#4f8cff 48%,#8b7bff 100%);
+    --shadow:0 24px 60px -20px rgba(0,0,0,0.65);
+    --r-lg:26px;
+    --r-md:18px;
+    --r-sm:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans KR","Noto Sans",sans-serif;
+    background:var(--bg-0);
+    color:var(--ink);
+    line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ambient background */
+  .bg-field{position:fixed;inset:0;z-index:-2;background:
+    radial-gradient(1100px 700px at 12% -8%,rgba(79,140,255,0.22),transparent 60%),
+    radial-gradient(900px 620px at 92% 8%,rgba(139,123,255,0.20),transparent 60%),
+    radial-gradient(1000px 800px at 60% 108%,rgba(63,224,208,0.16),transparent 60%),
+    linear-gradient(180deg,var(--bg-0),var(--bg-1) 55%,var(--bg-0));}
+  .bg-grid{position:fixed;inset:0;z-index:-1;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:64px 64px;
+    mask-image:radial-gradient(circle at 50% 30%,black,transparent 82%);}
+  .orb{position:fixed;border-radius:50%;filter:blur(60px);z-index:-1;opacity:.55;animation:float 18s ease-in-out infinite}
+  .orb.a{width:340px;height:340px;background:radial-gradient(circle,rgba(63,224,208,.55),transparent 70%);top:8%;left:60%}
+  .orb.b{width:300px;height:300px;background:radial-gradient(circle,rgba(139,123,255,.55),transparent 70%);top:120%;left:8%;animation-delay:-6s}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-38px) translateX(24px)}}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);
+    background:rgba(9,13,30,0.55);border-bottom:1px solid var(--stroke-soft);
+    transform:translateY(-100%);animation:navDrop .8s .2s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes navDrop{to{transform:translateY(0)}}
+  .nav-in{max-width:1080px;margin:0 auto;padding:14px 26px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:700;letter-spacing:.5px;font-size:.98rem}
+  .brand span{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:.86rem;font-weight:500;transition:color .25s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent-grad);transition:width .3s}
+  .nav-links a:hover::after{width:100%}
+  @media(max-width:720px){.nav-links{display:none}}
+
+  /* hero */
+  header{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:"Noto Sans",sans-serif;
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);
+    padding:8px 16px;border:1px solid var(--stroke);border-radius:100px;background:var(--glass);
+    backdrop-filter:blur(8px);margin-bottom:30px;opacity:0;animation:rise .9s .3s forwards}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+  h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-bottom:26px}
+  h1 .l1{display:block;opacity:0;animation:rise 1s .45s forwards}
+  h1 .l2{display:block;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:0;animation:rise 1s .6s forwards}
+  .lede{max-width:620px;color:var(--ink-soft);font-size:1.05rem;font-weight:400;margin-bottom:38px;opacity:0;animation:rise 1s .75s forwards}
+  .lede b{color:var(--ink);font-weight:500}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise 1s .9s forwards}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:100px;
+    font-weight:600;font-size:.92rem;text-decoration:none;transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer}
+  .btn-primary{background:var(--accent-grad);color:#06122a;box-shadow:0 12px 34px -10px rgba(79,140,255,.6)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px -10px rgba(79,140,255,.8)}
+  .btn-ghost{border:1px solid var(--stroke);color:var(--ink);background:var(--glass);backdrop-filter:blur(8px)}
+  .btn-ghost:hover{background:var(--glass-strong);transform:translateY(-3px)}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+  .hero-stats{display:flex;gap:16px;margin-top:56px;flex-wrap:wrap;opacity:0;animation:rise 1s 1.05s forwards}
+  .stat{flex:1;min-width:140px;padding:20px 22px;border-radius:var(--r-md);background:var(--glass);
+    border:1px solid var(--stroke-soft);backdrop-filter:blur(12px)}
+  .stat .n{font-size:1.7rem;font-weight:800;letter-spacing:-.02em;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat .k{font-family:"Noto Sans",sans-serif;font-size:.74rem;color:var(--ink-dim);letter-spacing:.04em;margin-top:4px}
+
+  /* section shell */
+  section{padding:90px 0;position:relative}
+  .sec-head{margin-bottom:52px}
+  .sec-eyebrow{font-family:"Noto Sans",sans-serif;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--violet);font-weight:700;margin-bottom:14px;display:block}
+  .sec-title{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:800;letter-spacing:-.02em;line-height:1.15}
+  .sec-sub{color:var(--ink-soft);margin-top:14px;max-width:640px;font-size:.98rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(38px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  /* approach cards */
+  .approach{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:860px){.approach{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.approach{grid-template-columns:1fr}}
+  .a-card{padding:26px 22px;border-radius:var(--r-md);background:var(--glass);border:1px solid var(--stroke-soft);
+    backdrop-filter:blur(14px);transition:transform .35s,background .35s,border-color .35s}
+  .a-card:hover{transform:translateY(-6px);background:var(--glass-strong);border-color:var(--stroke)}
+  .a-ico{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+    background:var(--accent-grad);margin-bottom:16px;font-size:1.1rem}
+  .a-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+  .a-card p{font-size:.86rem;color:var(--ink-soft);line-height:1.65}
+
+  /* project cards */
+  .projects{display:flex;flex-direction:column;gap:26px}
+  .p-card{position:relative;border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--stroke-soft);
+    backdrop-filter:blur(18px);box-shadow:var(--shadow);overflow:hidden;transition:transform .4s,border-color .4s}
+  .p-card:hover{transform:translateY(-6px);border-color:var(--stroke)}
+  .p-card::before{content:"";position:absolute;inset:0;padding:1px;border-radius:var(--r-lg);
+    background:linear-gradient(120deg,rgba(63,224,208,.5),rgba(139,123,255,.35),transparent 60%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .4s;pointer-events:none}
+  .p-card:hover::before{opacity:1}
+  .p-inner{padding:34px 36px}
+  @media(max-width:600px){.p-inner{padding:26px 22px}}
+  .p-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+  .p-idx{font-family:"Noto Sans",sans-serif;font-size:.74rem;letter-spacing:.2em;color:var(--ink-dim);font-weight:700}
+  .p-lab{display:inline-block;font-family:"Noto Sans",sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--cyan);font-weight:700;margin-bottom:10px}
+  .p-title{font-size:1.45rem;font-weight:800;letter-spacing:-.01em;line-height:1.25;margin-bottom:6px}
+  .p-meta{font-family:"Noto Sans",sans-serif;font-size:.8rem;color:var(--ink-dim)}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .tag{font-family:"Noto Sans",sans-serif;font-size:.7rem;padding:6px 12px;border-radius:100px;
+    border:1px solid var(--stroke);color:var(--ink-soft);background:var(--glass);white-space:nowrap}
+  .p-summary{color:var(--ink);font-size:1rem;font-weight:500;margin:6px 0 18px;line-height:1.6}
+  .p-summary b{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+  .p-body{color:var(--ink-soft);font-size:.92rem;line-height:1.75}
+  .p-body strong{color:var(--ink);font-weight:600}
+  .p-points{list-style:none;display:grid;gap:10px;margin-top:16px}
+  .p-points li{position:relative;padding-left:22px;font-size:.9rem;color:var(--ink-soft)}
+  .p-points li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-grad)}
+  .p-points li b{color:var(--ink);font-weight:600}
+  .p-impact{display:flex;gap:24px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid var(--stroke-soft)}
+  .im{}
+  .im .v{font-size:1.35rem;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .im .l{font-family:"Noto Sans",sans-serif;font-size:.72rem;color:var(--ink-dim);margin-top:2px}
+  .reflect{margin-top:18px;font-size:.86rem;font-style:italic;color:var(--ink-dim);padding-left:16px;border-left:2px solid var(--violet)}
+
+  /* career timeline */
+  .timeline{position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--cyan),var(--violet),transparent)}
+  .tl-item{position:relative;padding:0 0 34px 8px}
+  .tl-item::before{content:"";position:absolute;left:-27px;top:5px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg-0);border:2px solid var(--cyan);box-shadow:0 0 0 4px rgba(63,224,208,.12)}
+  .tl-when{font-family:"Noto Sans",sans-serif;font-size:.78rem;color:var(--cyan);font-weight:700;letter-spacing:.04em}
+  .tl-role{font-size:1.08rem;font-weight:700;margin:4px 0 2px}
+  .tl-org{font-size:.86rem;color:var(--ink-dim);margin-bottom:10px}
+  .tl-desc{font-size:.88rem;color:var(--ink-soft);line-height:1.7}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.skill-grid{grid-template-columns:1fr}}
+  .sk-card{padding:26px;border-radius:var(--r-md);background:var(--glass);border:1px solid var(--stroke-soft);backdrop-filter:blur(14px);transition:transform .35s,background .35s}
+  .sk-card:hover{transform:translateY(-5px);background:var(--glass-strong)}
+  .sk-card h3{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);font-weight:700;margin-bottom:16px;font-family:"Noto Sans",sans-serif}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:.8rem;padding:7px 13px;border-radius:10px;background:rgba(255,255,255,.045);border:1px solid var(--stroke-soft);color:var(--ink-soft);transition:color .25s,border-color .25s}
+  .chip:hover{color:var(--ink);border-color:var(--cyan)}
+
+  /* closing */
+  .closing{text-align:center;padding:110px 0 90px}
+  .close-card{border-radius:var(--r-lg);background:var(--glass);border:1px solid var(--stroke);backdrop-filter:blur(18px);padding:64px 40px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .close-card::after{content:"";position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:520px;height:520px;background:radial-gradient(circle,rgba(63,224,208,.18),transparent 65%);pointer-events:none}
+  .close-card h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;letter-spacing:-.02em;margin-bottom:18px;position:relative}
+  .close-card h2 span{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .close-card p{color:var(--ink-soft);max-width:520px;margin:0 auto 30px;position:relative}
+  footer{text-align:center;padding:34px 0;color:var(--ink-dim);font-size:.8rem;font-family:"Noto Sans",sans-serif;border-top:1px solid var(--stroke-soft)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    nav{transform:none}
+    .eyebrow,h1 .l1,h1 .l2,.lede,.hero-cta,.hero-stats{opacity:1}
+  }
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grid"></div>
+<div class="orb a"></div>
+<div class="orb b"></div>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">권유정 <span>· Data-Driven PM</span></div>
+    <div class="nav-links">
+      <a href="#approach">일하는 방식</a>
+      <a href="#work">프로젝트</a>
+      <a href="#career">커리어</a>
+      <a href="#skills">역량</a>
+      <a href="#contact">연락</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Data-Driven PM · AI 기획자</div>
+    <h1>
+      <span class="l1">데이터로 묻고,</span>
+      <span class="l2">AI로 빌드하는 기획자</span>
+    </h1>
+    <p class="lede">
+      리서치·이커머스·게임 플랫폼을 거치며 <b>고객 유입부터 수익화까지 서비스 전 사이클</b>을 책임져 왔습니다.
+      최근에는 사내 AI 데이터 분석 에이전트 <b>‘DashAgent’를 PRD부터 풀스택까지 직접 빌드</b>하며,
+      기획과 개발의 경계를 넘어 일합니다.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">프로젝트 보기 →</a>
+      <a href="#contact" class="btn btn-ghost">연락하기</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="n">11년</div><div class="k">서비스 기획 · PM</div></div>
+      <div class="stat"><div class="n">0→1</div><div class="k">AI 프로덕트 풀스택 빌드</div></div>
+      <div class="stat"><div class="n">SQL·LLM</div><div class="k">데이터 기반 의사결정</div></div>
+      <div class="stat"><div class="n">E2E</div><div class="k">발견부터 운영까지 오너십</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="approach">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">How I Work</span>
+      <h2 class="sec-title">일하는 방식</h2>
+      <p class="sec-sub">문제 정의의 깊이는 도메인 감각으로, 검증의 정확도는 데이터로, 구현의 속도는 AI로 끌어올립니다.</p>
+    </div>
+    <div class="approach">
+      <div class="a-card reveal d1">
+        <div class="a-ico">🔍</div>
+        <h3>고객 중심의 문제 정의</h3>
+        <p>VOC·UT·CS 데이터에서 본질적 페인 포인트를 발굴하고, 가설 단계부터 사용자 언어로 문제를 재정의합니다.</p>
+      </div>
+      <div class="a-card reveal d1">
+        <div class="a-ico">📊</div>
+        <h3>데이터 기반 의사결정</h3>
+        <p>직접 가설을 세우고 SQL과 대시보드로 검증합니다. 기획서의 모든 주장에 근거 데이터를 첨부합니다.</p>
+      </div>
+      <div class="a-card reveal d2">
+        <div class="a-ico">🧩</div>
+        <h3>End-to-End 오너십</h3>
+        <p>기획·BM·법무 검토·데이터 파이프라인·QA·운영까지, 단발성이 아닌 솔루션화를 지향합니다.</p>
+      </div>
+      <div class="a-card reveal d2">
+        <div class="a-ico">🔁</div>
+        <h3>반복과 검증</h3>
+        <p>배포가 끝이 아닙니다. 효과 검증과 후속 가설 수립까지 이어져야 한 사이클이 완성됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Selected Work</span>
+      <h2 class="sec-title">프로젝트</h2>
+      <p class="sec-sub">AI 프로덕트를 직접 설계·빌드한 경험을 앞에, 사용자 리서치·데이터 기반 서비스 기획 경험을 이어 배치했습니다.</p>
+    </div>
+
+    <div class="projects">
+
+      <!-- 1 DashAgent -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">AI Product · Self-Built</span>
+              <div class="p-title">DashAgent · 자연어 → SQL 자율 분석 에이전트</div>
+              <div class="p-meta">넥슨코리아 · 2026.03 — 진행중</div>
+            </div>
+            <div class="tags"><span class="tag">LLM Agent</span><span class="tag">Full-Stack</span><span class="tag">HITL</span><span class="tag">Security</span></div>
+          </div>
+          <p class="p-summary">복잡한 SQL·스키마를 몰라도 <b>자연어 질의만으로 데이터를 추출하고 인터랙티브 대시보드를 자동 생성</b>하는 사내 AI 데이터 분석 웹앱. PRD부터 풀스택 구현까지 직접 빌드.</p>
+          <p class="p-body">단순한 Text-to-SQL이 아니라, <strong>LLM의 비결정성을 제품 품질로 흡수</strong>하는 것을 핵심 설계 원칙으로 삼았습니다.</p>
+          <ul class="p-points">
+            <li><b>2단계 LLM 파이프라인</b> — 자연어를 DashboardSpec으로 1차 파싱 후 SQL 생성, 같은 질의에 일관된 결과 보장</li>
+            <li><b>Pre/Post 정합성 검증</b> — GROUP BY 누락·이상치·중복을 자동 검출하고 색상 뱃지로 투명하게 노출 (Human-in-the-loop)</li>
+            <li><b>스키마 마스킹 보안</b> — 실제 DB·컬럼명을 외부 LLM에 전송하지 않는 별칭 통신 구조</li>
+            <li><b>SpecKit 하네스 엔지니어링</b> — 5종 명세를 검증 가능한 형태로 정제, Cursor로 PRD→코드 풀사이클 운영</li>
+          </ul>
+          <p class="reflect">AI 시대의 기획자는 의도를 명세로 정확히 옮기고, AI의 불확실성을 사람이 신뢰할 수 있는 구조로 바꾸는 사람이다.</p>
+        </div>
+      </article>
+
+      <!-- 2 단축 URL -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">AI Workflow · Co-Authored PRD</span>
+              <div class="p-title">NEXON Shortened URL · AI 협업형 PRD 재구축</div>
+              <div class="p-meta">넥슨코리아 · 2026.03 — 진행중</div>
+            </div>
+            <div class="tags"><span class="tag">AX</span><span class="tag">Figma AI</span><span class="tag">Platform</span></div>
+          </div>
+          <p class="p-summary">레거시 단축 URL 서비스를 전면 재설계. <b>Speckit 기반 협업형 PRD 워크플로우</b>를 정립해 기획·개발 명세를 단일 문서로 통합하고, 그 명세가 곧 개발·검증의 기준이 되도록 구조화.</p>
+          <ul class="p-points">
+            <li><b>Speckit 정합성 확보</b> — 기획자·개발자 초안을 일관 형식으로 정제, 모호성·누락 항목 자동 검출</li>
+            <li><b>Figma AI 프로토타이핑</b> — 정제된 PRD 기반 화면 자동 생성, 명세↔화면 양방향 검증 루프</li>
+            <li><b>운영 사고 원천 차단</b> — 코드 정책 재설계로 캐시 충돌 가능성 제거, 권한 모델 평탄화로 운영 공수 절감</li>
+          </ul>
+          <p class="reflect">명세의 모호성을 줄이는 일이 곧 협업의 속도를 만든다. AI 시대의 PRD는 사람뿐 아니라 AI도 함께 읽는 문서다.</p>
+        </div>
+      </article>
+
+      <!-- 3 큐레이션 -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">User Research · Personalization</span>
+              <div class="p-title">큐레이션 전문관 리뉴얼 및 알고리즘 고도화</div>
+              <div class="p-meta">홈앤쇼핑 · 2020.12 — 2021.05</div>
+            </div>
+            <div class="tags"><span class="tag">e-Commerce</span><span class="tag">UT 100</span><span class="tag">B2C</span></div>
+          </div>
+          <p class="p-summary">사용자 100명 UT로 <b>‘추천관’이 단순 베스트 매장으로 오인지되는 시맨틱 갭</b>을 발견하고, 대체재 위주 추천에서 보완재 중심 미래 예측 큐레이션으로 전환.</p>
+          <ul class="p-points">
+            <li><b>UT 기반 가설 검증</b> — 응답자 46.7%가 ‘추천관’을 베스트 매장으로 오인지, 사용자 기대와 시스템 설계 간 갭 정의</li>
+            <li><b>보완재 중심 추천 로직</b> — 대체재가 아닌 함께 사는 상품을 추천해 교차 구매 유도</li>
+            <li><b>행동 데이터 기반 배열</b> — 구매·최근 본 상품 시그널로 카테고리 재정립</li>
+          </ul>
+          <div class="p-impact">
+            <div class="im"><div class="v">+16.7%</div><div class="l">큐레이션 전문관 전체 CVR</div></div>
+            <div class="im"><div class="v">+22.4%</div><div class="l">월평균 주문 건수</div></div>
+            <div class="im"><div class="v">+17.5%</div><div class="l">월평균 주문 금액</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 간편 로그인 -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">Data-Driven · SSO</span>
+              <div class="p-title">넥슨플레이 간편 로그인 설계</div>
+              <div class="p-meta">넥슨코리아 · 2024.03 — 2024.12</div>
+            </div>
+            <div class="tags"><span class="tag">App</span><span class="tag">Data</span><span class="tag">SSO</span><span class="tag">Platform</span></div>
+          </div>
+          <p class="p-summary">PowerBI + Snowflake + DAX로 <b>로그인 퍼널 대시보드를 직접 구축</b>하고, SSO SDK 통신 규격·인증 정책 설계를 주도.</p>
+          <ul class="p-points">
+            <li><b>데이터 파이프라인 구축</b> — 화면·버튼별 로그 코드 설계, DAX로 계정 전환·사용률 등 지표 추출</li>
+            <li><b>SDK·인증 정책 설계</b> — 넥슨플레이를 인증 플랫폼으로 격상, 예외·에러 정책 표준화</li>
+            <li><b>이해관계자 조율</b> — 개발·사업·보안 부서 간 우선순위 확보 및 장기 로드맵 수립</li>
+          </ul>
+          <p class="reflect">데이터로 가설을 만들고, 스펙으로 그 가설을 시스템에 이식할 수 있다면 제품은 한 단계 빠르게 움직인다.</p>
+        </div>
+      </article>
+
+      <!-- 5 OpenAPI -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">End-to-End · B2D Platform</span>
+              <div class="p-title">넥슨 OpenAPI 개발자 센터 리뉴얼</div>
+              <div class="p-meta">넥슨코리아 · 2022.12 — 2023.12</div>
+            </div>
+            <div class="tags"><span class="tag">Web</span><span class="tag">B2D</span><span class="tag">Platform</span></div>
+          </div>
+          <p class="p-summary">8종 게임 API 표준화 + OAuth 2.0 + 통합 어드민으로 <b>외부 도입 폭증과 내부 운영 효율을 동시에 확보</b>. 기획-디자인-개발-보안-QA 전 과정 PM 리딩.</p>
+          <ul class="p-points">
+            <li><b>개발자 페르소나 기반 IA 재설계</b> — Sitemap·User Flow 최적화, 8종 게임별 스키마·Swagger 문서 표준화</li>
+            <li><b>Full-Cycle 리딩</b> — 베트남 지사 개발팀과 실시간 협업, 매주 TF로 일정·리스크 관리</li>
+          </ul>
+          <div class="p-impact">
+            <div class="im"><div class="v">+1,982%</div><div class="l">런칭 30일 UV 신장</div></div>
+            <div class="im"><div class="v">+636%</div><div class="l">동기간 PV 신장</div></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 AR플레이 -->
+      <article class="p-card reveal">
+        <div class="p-inner">
+          <div class="p-top">
+            <div>
+              <span class="p-lab">0-to-1 · OMO Solution</span>
+              <div class="p-title">위치인식 기반 AR 오프라인 이벤트 솔루션 ‘AR플레이’</div>
+              <div class="p-meta">넥슨코리아 · 2025.01 — 2025.04</div>
+            </div>
+            <div class="tags"><span class="tag">App</span><span class="tag">OMO</span><span class="tag">AR</span><span class="tag">Solution</span></div>
+          </div>
+          <p class="p-summary">포켓몬 GO식 게이미피케이션을 <b>사내 범용 AR 이벤트 솔루션으로 제품화</b>. 9개 대학교 + 제주공항 상용 런칭, 다양한 게임 IP가 재사용 가능한 자산으로 구축.</p>
+          <ul class="p-points">
+            <li><b>백오피스 솔루션화</b> — 위·경도 입력으로 캐릭터 배치, 노출 반경으로 난이도·밀집도 조절</li>
+            <li><b>스킨 시스템</b> — 여러 IP가 범용 활용 가능하도록 버튼·문구·이펙트를 BO에서 자유롭게 변경</li>
+          </ul>
+          <p class="reflect">“한 번 만든 기능을 솔루션으로 만든다”는 시각이, 단발성 이벤트와 지속적 자산의 차이를 만든다.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="career">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Career</span>
+      <h2 class="sec-title">커리어 타임라인</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-when">2022.08 — 현재</div>
+        <div class="tl-role">G · PM</div>
+        <div class="tl-org">넥슨코리아 · 플랫폼본부 플랫폼파운데이션 그룹 Re:platform팀</div>
+        <div class="tl-desc">AI 풀스택 빌드(DashAgent) · AI 협업형 Speckit PRD 재구축(단축 URL) · 넥슨플레이 앱 서비스 PM(AR플레이, 플레이포인트 리뉴얼, SSO·간편 로그인, OpenAPI 개발자 센터 등 풀사이클 리딩) · 게임 로그 데이터 콘솔 기획·운영.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-when">2020.07 — 2022.08</div>
+        <div class="tl-role">과장 · 파트리더</div>
+        <div class="tl-org">홈앤쇼핑 · 영업2본부 M서비스기획팀 (매장/전시 파트리더)</div>
+        <div class="tl-desc">e커머스 모바일 앱 서비스 정책 수립 및 상위/상세 기획 · CVR·큐레이션 CVR 등 팀 KPI 수립 및 대시보드 개발 · 베스트 전문관 런칭으로 일평균 주문 +1,748%.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-when">2015.01 — 2020.07</div>
+        <div class="tl-role">대리</div>
+        <div class="tl-org">한국리서치 · 서베이플랫폼사업부 온라인패널조사팀</div>
+        <div class="tl-desc">리서치 데이터 분석 및 회원 데이터 엔지니어링(고객 CRM) · 카카오 채널 친구관리·알림톡 발송 운영 · 분기별 프로파일 조사 기획·운영 · 리워드 지급 프로세스 자동화로 처리 시간 −85.7%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Capabilities</span>
+      <h2 class="sec-title">직무 역량</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="sk-card reveal d1">
+        <h3>Product Planning</h3>
+        <div class="chips">
+          <span class="chip">IA · Sitemap · User Flow</span>
+          <span class="chip">와이어프레임 · 프로토타입</span>
+          <span class="chip">정책 · 약관 · 법무 검토</span>
+          <span class="chip">BM · GTM · 우선순위</span>
+          <span class="chip">UT · VOC · CS 리서치</span>
+          <span class="chip">Figma · JIRA · Confluence</span>
+        </div>
+      </div>
+      <div class="sk-card reveal d2">
+        <h3>Data & Analytics</h3>
+        <div class="chips">
+          <span class="chip">SQL 직접 쿼리</span>
+          <span class="chip">지표 설계 · KPI · 대시보드</span>
+          <span class="chip">Python 분석 · 자동화</span>
+          <span class="chip">정합성 QA · 이상치 모니터링</span>
+          <span class="chip">PowerBI · DAX · Tableau</span>
+          <span class="chip">Snowflake · BigQuery · GA</span>
+        </div>
+      </div>
+      <div class="sk-card reveal d3">
+        <h3>AI Product / Build</h3>
+        <div class="chips">
+          <span class="chip">LLM 파이프라인 설계</span>
+          <span class="chip">프롬프트 · RAG · 스키마 마스킹</span>
+          <span class="chip">SpecKit 하네스 엔지니어링</span>
+          <span class="chip">풀스택 빌드 (BE·FE·배포)</span>
+          <span class="chip">Cursor · Claude · Figma AI</span>
+          <span class="chip">React · TypeScript · FastAPI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" id="contact">
+  <div class="wrap">
+    <div class="close-card reveal">
+      <h2>데이터로 묻고, <span>AI로 빌드하는</span> 풀스택 기획자</h2>
+      <p>문제 정의의 깊이는 도메인 감각으로, 검증의 정확도는 데이터로, 구현의 속도는 AI로 끌어올리는 PM이 되겠습니다.</p>
+      <a href="mailto:kwon.yujeong1@gmail.com" class="btn btn-primary">kwon.yujeong1@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 권유정 · Yu Jeong Kwon — Data-Driven PM & AI 기획자</footer>
+
+<script>
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+  },{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // subtle parallax on orbs
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    document.querySelector('.orb.a').style.transform=`translateY(${y*0.06}px)`;
+    document.querySelector('.orb.b').style.transform=`translateY(${y*-0.04}px)`;
+  },{passive:true});
+</script>
+</body>
+</html>
