@@ -1,0 +1,18 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "권유정 · Data-Driven PM & AI 기획자 Portfolio Website with Vercel Web Analytics",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "start": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "portfolio",
+    "vercel",
+    "analytics"
+  ],
+  "author": "권유정",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
