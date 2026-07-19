@@ -72,6 +72,8 @@ main{padding:120px 0 100px}
 .blk ul li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--accent-grad)}
 .blk ul li b,.blk p b{color:var(--ink);font-weight:600}
 .blk em{color:var(--ink-dim);font-style:italic}
+code{font-family:"Noto Sans",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;padding:2px 6px;border-radius:6px;background:rgba(63,224,208,.1);border:1px solid rgba(63,224,208,.22);color:var(--cyan)}
+.deci code{font-size:.84em}
 
 .impact-box{padding:26px 28px;border-radius:var(--r-md);background:rgba(63,224,208,.06);border:1px solid rgba(63,224,208,.28);margin-bottom:44px}
 .impact-box .blk-label{color:var(--cyan)}
